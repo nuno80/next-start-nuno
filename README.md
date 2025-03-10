@@ -8,6 +8,85 @@ A basic Next.js starter.
   - [Setup](#setup)
   - [Resources](#resources)
 
+# setup new github project
+
+Trattandosi di uno starter kit ogni volta che inizi un nuovo progetto DEVI creare una nuova repository in github!
+
+
+## Creazione Repository GitHub
+1. Accedi al tuo account GitHub
+2. Clicca su "New repository"
+3. Inserisci lo stesso nome utilizzato per l'app T3
+4. NON aggiungere README, .gitignore o license (verranno creati dal template)
+5. Clicca "Create repository"
+
+## Connessione del Progetto a GitHub
+
+Prima, vai nella directory dell'app Next.js.
+
+```bash
+cd nome-app
+```
+Verifica che sei nella directory corretta (dovrebbe mostrare il percorso che termina con /drive-tutorial):
+
+```bash
+pwd
+```
+
+Se c'è già una cartella .git, rimuovila per sicurezza con il seguente comando:
+
+```bash
+rm -rf .git
+```
+# file di configurazione per GitHub Actions 'ci.yaml'. 
+Crea una cartella ".github/workflow" all'interno della cartella principale del progetto (ex. drive-tutorial) e crea al suo interno un file 'ci.yaml'.
+Questo workflow serve a:
+Verificare automaticamente la qualità del codice ad ogni push
+Assicurare che il codice compili correttamente
+Controllare errori di sintassi e stile
+Garantire che tutti i file di configurazione necessari siano presenti:
+
+```bash
+
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install -g pnpm && pnpm install
+
+      - name: Copy .env.example files
+        shell: bash
+        run: find . -type f -name ".env.example" -exec sh -c 'cp "$1" "${1%.*}"' _ {} \;
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+```
+
+Inizializza il nuovo repository e aggiungi i file:
+```bash
+
+git init
+git add .
+git commit -m "Initial commit"
+
+#Collega il repository remoto e fai il push:
+
+git remote add origin https://github.com/nuno80/next-start-nuno.git
+git branch -M main
+git push -u origin main
+
 ## Stack
 
 - Linting / Code Style
