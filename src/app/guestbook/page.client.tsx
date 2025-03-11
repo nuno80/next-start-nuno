@@ -2,15 +2,16 @@
 
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { Button, Textarea } from "@heroui/react";
-import { useFormState } from "react-dom";
+import { Button, Textarea, } from "@heroui/react";
+import { useActionState } from "react";
 
 import { InsertGuestbookEntrySchema } from "@/db/schema/guestbook-entries";
 
 import { createGuestbookEntry } from "./actions";
 
+
 export default function GuestbookClient() {
-  const [lastResult, action] = useFormState(createGuestbookEntry, undefined);
+  const [lastResult, action] = useActionState(createGuestbookEntry, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
