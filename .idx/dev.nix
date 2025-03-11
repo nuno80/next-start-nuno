@@ -4,6 +4,7 @@
     pkgs.nodejs_20
     pkgs.docker
     pkgs.corepack
+    pkgs.sudo
   ];
 
   idx.extensions = [
@@ -12,7 +13,7 @@
     "dbaeumer.vscode-eslint"
     "formulahendry.auto-rename-tag"
   ];
-  
+
   services.docker = {
     enable = true; # This line enables Docker
   };
@@ -22,7 +23,7 @@
       web = {
         command = [
           "npm"
-          "run" 
+          "run"
           "start"
           "--"
           "--port"
