@@ -38,7 +38,7 @@ Se c'è già una cartella .git, rimuovila per sicurezza con il seguente comando:
 ```bash
 rm -rf .git
 ```
-# file di configurazione per GitHub Actions 'ci.yaml'. 
+## file di configurazione per GitHub Actions 'ci.yaml'. 
 Crea una cartella ".github/workflow" all'interno della cartella principale del progetto (ex. drive-tutorial) e crea al suo interno un file 'ci.yaml'.
 Questo workflow serve a:
 Verificare automaticamente la qualità del codice ad ogni push
@@ -83,9 +83,12 @@ git commit -m "Initial commit"
 
 #Collega il repository remoto e fai il push:
 
-git remote add origin https://github.com/nuno80/next-start-nuno.git
+git remote add origin https://github.com/nuno80/next-start-nuno.git 
+//serve solo per il primo collegamento a github
+
 git branch -M main
 git push -u origin main
+```
 
 ## Stack
 
