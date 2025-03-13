@@ -3,10 +3,17 @@
 A basic Next.js starter.
 
 - [Next Start](#next-start)
+- [setup new github project](#setup-new-github-project)
+  - [Creazione Repository GitHub](#creazione-repository-github)
+  - [Connessione del Progetto a GitHub](#connessione-del-progetto-a-github)
+  - [file di configurazione per GitHub Actions 'ci.yaml'.](#file-di-configurazione-per-github-actions-ciyaml)
   - [Stack](#stack)
   - [Branches](#branches)
   - [Setup](#setup)
   - [Resources](#resources)
+  - [script prettier](#script-prettier)
+  - [.prettierrc.json](#prettierrcjson)
+  - [.eslintrc.json](#eslintrcjson)
 
 # setup new github project
 
@@ -182,6 +189,7 @@ docker compose up
 ```sh
 pnpm run db:migrate
 ```
+Per applicare le modifiche il DB docker deve essere running!
 
 6. Start the app:
 

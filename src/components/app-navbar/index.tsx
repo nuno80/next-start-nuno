@@ -20,17 +20,18 @@ import { ThemeSwitcher } from "./theme-switcher";
 
 export default function AppNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { status } = useSession();
+  const { data: session, status } = useSession();
 
-  const menuItems = [
+  const menuItems = [ 
     {
       label: "Home",
       href: "/",
     },
   ];
 
+
   if (status === "authenticated") {
-    menuItems.push(
+      menuItems.push(
       {
         label: "Profile",
         href: "/profile",
@@ -40,6 +41,15 @@ export default function AppNavbar() {
         href: "/guestbook",
       }
     );
+    if(session?.user.role === "admin"){
+      menuItems.push(
+      {
+        label: "Dashboard",
+        href: "/dashboard",
+      }
+    );
+    }
+
   }
 
   return (

@@ -19,7 +19,7 @@ const accounts = pgTable(
     scope: text("scope"),
     id_token: text("id_token"),
     session_state: text("session_state"),
-    role: text("role"),
+    role: text("role").default("user").notNull(),
   },
   (account) => ({
     compoundKey: primaryKey({
